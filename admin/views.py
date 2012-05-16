@@ -1,6 +1,8 @@
 # Create your views here.
-from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
+from parole2.models import Parole
+
 def index(request):
-    return render_to_response('admin/index.html')
+    paroles = Parole.objects.all()
+    return render_to_response('admin/index.html', {'paroles_to_publish': paroles})

@@ -21,7 +21,7 @@
 </div>
 <div class="row">
     <div class="span12">
-        {% if notPublishedParoles|length > 0 %}
+        {% if paroles_to_publish|length > 0 %}
         <h2>Publication(s) en cours <small>la date saisie à {{ publishHour }}</small></h2>
         <table class="table table-striped">
             <thead>
@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for parole in notPublishedParoles %}
+                {% for parole in paroles_to_publish %}
                 <tr>
                     <td class="parole-title">{{ parole.title }}</td>
                     <td class="parole-parole">{{ parole.parole }}</td>
