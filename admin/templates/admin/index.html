@@ -1,0 +1,116 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+<div class="hero-unit">
+    <h1>Paroles... Paroles</h1>
+    <blockquote>
+        <p>
+            Paroles et paroles et paroles /
+            Écoute-moi /
+            Paroles et paroles et paroles /
+            Je t'en prie /
+            Paroles et paroles et paroles /
+            Je te jure /
+            Paroles et paroles et paroles et paroles /
+            Paroles et encore des paroles que tu sèmes au vent
+        </p>
+        <small>Dalida et Alain Delon, 1972</small>
+    </blockquote>
+    <p><a class="btn btn-primary btn-large" data-toggle="modal" href="#addParoleModal">Ajouter une nouvelle parole »</a></p>
+    <p><a class="btn btn-large" href="http://parole2.disqus.com/admin/moderate/" target="_blank">Modérer les commentaires »</a></p>
+</div>
+<div class="row">
+    <div class="span12">
+        {% if notPublishedParoles|length > 0 %}
+        <h2>Publication(s) en cours <small>la date saisie à {{ publishHour }}</small></h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Parole</th>
+                    <th>Commentaire décalé</th>
+                    <th>Auteur</th>
+                    <th>Source</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for parole in notPublishedParoles %}
+                <tr>
+                    <td class="parole-title">{{ parole.title }}</td>
+                    <td class="parole-parole">{{ parole.parole }}</td>
+                    <td class="parole-comment">{{ parole.comment }}</td>
+                    <td class="parole-author">{{ parole.author }}</td>
+                    <td class="parole-source">{{ parole.source }}</td>
+                    <td class="parole-date">{{ parole.date }}</td>
+                    <td>
+                        <a class="edit-parole" href="#">Editer</a> -
+                        <a class="delete-parole" href="#">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-info">
+            Aucune parole en cours de publication.
+        </div>
+        {% endif %}
+    </div>
+</div>
+<form class="form-horizontal" action="#" method="POST">
+    <div class="modal fade" id="addParoleModal">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Ajouter une parole</h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Sauver</button>
+            <a href="#" class="btn">Annuler</a>
+        </div>
+    </div>
+</form>
+<form class="form-horizontal" id="editParoleForm" method="POST">
+    <div class="modal fade" id="editParoleModal">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Editer une parole</h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Sauver</button>
+            <a href="#" class="btn">Annuler</a>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    if ($('#addParoleModal ul.error').length > 0) $('#addParoleModal').modal('show');
+    if ($('#editParoleModal ul.error').length > 0) $('#editParoleModal').modal('show');
+    $('#add_parole_date, #edit_parole_date').datepicker({ dateFormat: 'dd/mm/yy' });
+    $('.edit-parole').click(function(event) {
+        event.preventDefault();
+        var row = $(this).parents('tr')
+            , title = row.children('.parole-title').text()
+            , parole = row.children('.parole-parole').text()
+            , comment = row.children('.parole-comment').text()
+            , author = row.children('.parole-author').text()
+            , source = row.children('.parole-source').text()
+            , date = row.children('.parole-date').text();
+        $('#editParoleForm').attr('action', $(this).attr('href'));
+        $('#edit_parole_title').val(title);
+        $('#edit_parole_parole').val(parole);
+        $('#edit_parole_comment').val(comment);
+        $('#edit_parole_author').val(author);
+        $('#edit_parole_source').val(source);
+        $('#edit_parole_date').val(date);
+        $('#editParoleModal').modal('show');
+    });
+    $('.delete-parole').click(function(event) {
+        return confirm('T\'es sûr de vouloir faire ça ?');
+    });
+</script>
+{% endblock %}
