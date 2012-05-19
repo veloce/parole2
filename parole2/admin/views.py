@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 
-from paroles.models import Parole
+from parole2.paroles.models import Parole
 
 def index(request):
     paroles = Parole.objects.all()
