@@ -7,6 +7,12 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+AUTHORIZED_EMAILS = set([
+    'vincent.velociter@gmail.com',
+    'modo.parole2@gmail.com',
+    'maxanot@gmail.com',
+])
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -98,6 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'parole2.admin.middleware.BasicOpenidAuthMiddleware',
 )
 
 ROOT_URLCONF = 'parole2.urls'
