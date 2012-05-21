@@ -10,12 +10,12 @@ class BasicOpenidAuthMiddleware:
         if request.path_info[0:7] != '/admin/':
             return None
 
-        if not 'openid_username' in request.session:
+        if 'openid_username' not in request.session:
             request.session['openid_session'] = {}
             consumer = Consumer(request.session['openid_session'], None)
 
             # auth request to google has not been made yet
-            if not 'openid.mode' in request.REQUEST:
+            if 'openid.mode' not in request.REQUEST:
                 ax_request = ax.FetchRequest()
                 ax_request.add(ax.AttrInfo('http://axschema.org/contact/email', required = True))
 
