@@ -34,5 +34,7 @@ class BasicOpenidAuthMiddleware:
                     username = ax_response.get('http://axschema.org/contact/email')[0]
                     request.session['openid_username'] = username
 
-        if request.session.get('openid_username', None) not in AUTHORIZED_EMAILS:
+        username = request.session.get('openid_username', None)
+        if username not in AUTHORIZED_EMAILS:
+            if username: del request.session['openid_username']
             return HttpResponse('403 Forbidden', status=403)

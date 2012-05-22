@@ -12,7 +12,6 @@ def index(request):
             {'paroles_to_publish': paroles, 'form': form},
             context_instance=RequestContext(request))
 
-@require_POST()
 def add(request):
     pass
 
