@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.forms import ModelForm
 
 class ParoleManager(models.Manager):
     def published(self):
@@ -23,3 +24,7 @@ class Parole(models.Model):
 
     def __unicode__(self):
         return self.author + ' - ' + self.title
+
+class ParoleForm(ModelForm):
+    class Meta:
+        model = Parole
