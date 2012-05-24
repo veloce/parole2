@@ -19,6 +19,19 @@
     <p><a class="btn btn-primary btn-large" data-toggle="modal" href="{% url parole2.admin.views.add %}">Ajouter une nouvelle parole »</a></p>
     <p><a class="btn btn-large" href="http://parole2.disqus.com/admin/moderate/" target="_blank">Modérer les commentaires »</a></p>
 </div>
+{% if messages %}
+<div class="row">
+    <div class="span12">
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+            <a class="close" data-dismiss="alert">×</a>
+            <h4 class="alert-heading">Info</h4>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 <div class="row">
     <div class="span12">
         {% if paroles_to_publish|length > 0 %}

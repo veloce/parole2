@@ -1,7 +1,10 @@
+# *-* coding: utf-8 *-*
+
 # Create your views here.
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 from django.views.decorators.http import require_http_methods
+from django.contrib import messages
 
 from parole2.paroles.models import Parole, ParoleForm
 
@@ -44,6 +47,7 @@ def edit(request, id_parole):
 def delete(request, id_parole):
     parole = get_object_or_404(Parole, pk=id_parole)
     parole.delete()
+    messages.info(request, 'La parole a été supprimée.')
     return redirect('parole2.admin.views.index')
 
 def logout(request):
