@@ -1,0 +1,15 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="span12">
+        <h3>Ajouter une parole</h3>
+        <form class="form-horizontal" action="{% url parole2.admin.views.add %}" method="POST">
+            {% include 'admin/form.html' %}
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#id_date').datepicker({ dateFormat: 'dd/mm/yy' });
+</script>
+{% endblock %}

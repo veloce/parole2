@@ -7,20 +7,22 @@ from parole2.paroles.models import Parole, ParoleForm
 
 def index(request):
     paroles = Parole.objects.all()
-    form = ParoleForm()
     return render_to_response('admin/index.html',
-            {'paroles_to_publish': paroles, 'form': form},
+            {'paroles_to_publish': paroles},
             context_instance=RequestContext(request))
 
-@require_http_methods('POST')
+@require_http_methods(['GET', 'POST'])
 def add(request):
-    paroles = Parole.objects.all()
-    form = ParoleForm(request.POST)
-    if form.isValid():
-        form.save()
-        redirect('parole2.admin.views.index')
-    return render_to_response('admin/index.html',
-            {'paroles_to_publish': paroles, 'form': form},
+    if request.method == 'POST':
+        form = ParoleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('parole2.admin.views.index')
+    else:
+        form = ParoleForm()
+
+    return render_to_response('admin/add.html',
+            {'form': form},
             context_instance=RequestContext(request))
 
 def logout(request):

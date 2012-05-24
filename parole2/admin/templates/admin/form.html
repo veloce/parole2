@@ -9,6 +9,7 @@
             </div>
         </div>
         {% endfor %}
-        <input type="submit" value="Sauver" />
+        <button type="submit" class="btn btn-primary">Sauver</button>
+        <a href="{% url parole2.admin.views.index %}" class="btn">Annuler</a>
     </fieldset>
 </form>
