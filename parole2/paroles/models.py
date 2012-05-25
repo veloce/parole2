@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea, TextInput, DateInput
 
 class ParoleManager(models.Manager):
     def published(self):
@@ -28,3 +28,11 @@ class Parole(models.Model):
 class ParoleForm(ModelForm):
     class Meta:
         model = Parole
+        widgets = {
+            'title': TextInput(attrs={'class': 'span4'}),
+            'parole': Textarea(attrs={'class': 'span4', 'rows': 5}),
+            'comment': Textarea(attrs={'class': 'span4', 'rows': 5}),
+            'author': TextInput(attrs={'class': 'span4'}),
+            'source': TextInput(attrs={'class': 'span4'}),
+            'date': DateInput(attrs={'class': 'span4'}),
+        }

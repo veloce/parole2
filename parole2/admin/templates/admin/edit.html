@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="span12">
-        <h3>Éditer une parole</h3>
+        <h2>Éditer une parole</h2>
         <form action="{% url parole2.admin.views.edit parole.id %}" method="POST">
             {% include 'admin/form.html' %}
         </form>
