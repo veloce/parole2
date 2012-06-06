@@ -9,7 +9,7 @@ from django.contrib import messages
 from parole2.paroles.models import Parole, ParoleForm
 
 def index(request):
-    paroles = Parole.objects.all()
+    paroles = Parole.objects.not_published()
     return render_to_response('admin/index.html',
             {'paroles_to_publish': paroles},
             context_instance=RequestContext(request))
