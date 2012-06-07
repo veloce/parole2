@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 
-from parole2.paroles.models import Parole
+from paroles.models import Parole
 
 def index(request):
     parole = Parole.objects.last_published()

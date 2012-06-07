@@ -16,7 +16,7 @@
         </p>
         <small>Dalida et Alain Delon, 1972</small>
     </blockquote>
-    <p><a class="btn btn-primary btn-large" data-toggle="modal" href="{% url parole2.admin.views.add %}">Ajouter une nouvelle parole »</a></p>
+    <p><a class="btn btn-primary btn-large" data-toggle="modal" href="{% url admin.views.add %}">Ajouter une nouvelle parole »</a></p>
     <p><a class="btn btn-large" href="http://parole2.disqus.com/admin/moderate/" target="_blank">Modérer les commentaires »</a></p>
 </div>
 {% if messages %}
@@ -58,8 +58,8 @@
                     <td class="parole-source">{{ parole.source }}</td>
                     <td class="parole-date">{{ parole.date }}</td>
                     <td>
-                        <a class="edit-parole" href="{% url parole2.admin.views.edit parole.id %}">Editer</a> -
-                        <a class="delete-parole" href="{% url parole2.admin.views.delete parole.id %}">Supprimer</a>
+                        <a class="edit-parole" href="{% url admin.views.edit parole.id %}">Editer</a> -
+                        <a class="delete-parole" href="{% url admin.views.delete parole.id %}">Supprimer</a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 
-from parole2.paroles.models import Parole, ParoleForm
+from paroles.models import Parole, ParoleForm
 
 def index(request):
     paroles = Parole.objects.not_published()
@@ -20,7 +20,7 @@ def add(request):
         form = ParoleForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('parole2.admin.views.index')
+            return redirect('admin.views.index')
     else:
         form = ParoleForm()
 
@@ -36,7 +36,7 @@ def edit(request, id_parole):
         form = ParoleForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('parole2.admin.views.index')
+            return redirect('admin.views.index')
     else:
         form = ParoleForm(instance=parole)
 
@@ -48,7 +48,7 @@ def delete(request, id_parole):
     parole = get_object_or_404(Parole, pk=id_parole)
     parole.delete()
     messages.info(request, 'La parole a été supprimée.')
-    return redirect('parole2.admin.views.index')
+    return redirect('admin.views.index')
 
 def logout(request):
     del request.session['openid_username']

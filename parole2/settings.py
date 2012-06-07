@@ -101,7 +101,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
 #    'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
-    'parole2.admin.context_processors.openid_username',
+    'admin.context_processors.openid_username',
 )
 
 # List of callables that know how to import templates from various sources.
@@ -119,7 +119,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'parole2.admin.middleware.BasicOpenidAuthMiddleware',
+    'admin.middleware.BasicOpenidAuthMiddleware',
 )
 
 ROOT_URLCONF = 'parole2.urls'
@@ -144,9 +144,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'parole2.paroles',
-    'parole2.admin',
-    'pages',
+    'paroles',
+    'admin',
 )
 
 # A sample logging configuration. The only tangible logging

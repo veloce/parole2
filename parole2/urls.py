@@ -5,7 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/', include('parole2.admin.urls')),
-    url(r'^', include('pages.urls')),
+    url(r'^admin/', include('admin.urls')),
+    url(r'^', include('paroles.urls')),
 
 )
