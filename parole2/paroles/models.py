@@ -4,10 +4,16 @@ from django.forms import ModelForm, Textarea, TextInput, DateInput
 
 class ParoleManager(models.Manager):
     def published(self):
-        return super(ParoleManager, self).get_query_set().filter(date__lte=timezone.now())
+        return super(ParoleManager, self).get_query_set() \
+                .filter(date__lte=timezone.now())
 
     def not_published(self):
-        return super(ParoleManager, self).get_query_set().filter(date__gt=timezone.now())
+        return super(ParoleManager, self).get_query_set() \
+                .filter(date__gt=timezone.now())
+
+    def last_published(self):
+        return super(ParoleManager, self).get_query_set() \
+                .order_by('date').reverse()[0:1].get()
 
 class Parole(models.Model):
     title = models.CharField(max_length=255)
