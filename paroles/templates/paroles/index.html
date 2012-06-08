@@ -5,4 +5,4 @@ Date: {{ parole.date }}
 
 <br />
 <br />
-Permalink: <a href="{% url paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.slug %}">here</a>
+Permalink: <a href="{% url paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.author_slug parole.title_slug %}">here</a>

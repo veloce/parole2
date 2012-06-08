@@ -50,7 +50,8 @@ class Parole(models.Model):
     author = models.CharField(max_length=255)
     source = models.CharField(max_length=255)
     date = models.DateField(unique=True)
-    slug = models.SlugField()
+    author_slug = models.SlugField()
+    title_slug = models.SlugField()
 
     objects = ParoleManager()
 
@@ -61,13 +62,14 @@ class Parole(models.Model):
         return self.author + ' - ' + self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.author_slug = slugify(self.author)
+        self.title_slug = slugify(self.title)
         super(Parole, self).save(*args, **kwargs)
 
 class ParoleForm(ModelForm):
     class Meta:
         model = Parole
-        exclude = ('slug',)
+        exclude = ('author_slug', 'title_slug',)
         widgets = {
             'title': TextInput(attrs={'class': 'span4'}),
             'parole': Textarea(attrs={'class': 'span4', 'rows': 5}),
