@@ -1,0 +1,8 @@
+Title: {{ parole.title }}<br/>
+Citation: {{ parole.parole }}<br />
+Author: {{ parole.author }} <br />
+Date: {{ parole.date }}
+
+<br />
+<br />
+Permalink: <a href="{% url paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' %}">here</a>
