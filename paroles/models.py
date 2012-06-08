@@ -31,6 +31,18 @@ class ParoleManager(models.Manager):
                 .filter(date__lte=get_pub_date()) \
                 .order_by('date').reverse()[0:1].get()
 
+    def next_published(self, date):
+        return super(ParoleManager, self).get_query_set() \
+                .filter(date__lte=get_pub_date()) \
+                .filter(date__gt=date) \
+                .order_by('date')[0:1].get()
+
+    def previous_published(self, date):
+        return super(ParoleManager, self).get_query_set() \
+                .filter(date__lte=get_pub_date()) \
+                .filter(date__lt=date) \
+                .order_by('date').reverse()[0:1].get()
+
 class Parole(models.Model):
     title = models.CharField(max_length=255)
     parole = models.TextField()
