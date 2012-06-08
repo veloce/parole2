@@ -13,6 +13,8 @@ AUTHORIZED_EMAILS = set([
     'maxanot@gmail.com',
 ])
 
+PAROLES_PUB_HOUR = 2 # 2h du mat
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -102,6 +104,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #    'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
     'admin.context_processors.openid_username',
+    'admin.context_processors.pub_hour',
 )
 
 # List of callables that know how to import templates from various sources.

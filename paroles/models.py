@@ -1,15 +1,29 @@
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone as tz
 from django.forms import ModelForm, Textarea, TextInput, DateInput
+
+from parole2.settings import PAROLES_PUB_HOUR
+
+def get_pub_date():
+    """
+        Publication date
+        If current hour is after publication hour: return today
+        else: return yesterday
+    """
+    now = tz.localtime(tz.now())
+    if now.hour >= PAROLES_PUB_HOUR:
+        return now.date()
+    else:
+        return now.date() - tz.timedelta(1)
 
 class ParoleManager(models.Manager):
     def published(self):
         return super(ParoleManager, self).get_query_set() \
-                .filter(date__lte=timezone.now())
+                .filter(date__lte=get_pub_date())
 
     def not_published(self):
         return super(ParoleManager, self).get_query_set() \
-                .filter(date__gt=timezone.now())
+                .filter(date__gt=get_pub_date())
 
     def last_published(self):
         return super(ParoleManager, self).get_query_set() \
@@ -26,7 +40,7 @@ class Parole(models.Model):
     objects = ParoleManager()
 
     def is_published(self):
-        return self.date <= timezone.now().date()
+        return self.date <= get_pub_date()
 
     def __unicode__(self):
         return self.author + ' - ' + self.title
