@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone as tz
 from django.forms import ModelForm, Textarea, TextInput, DateInput
+from django.template.defaultfilters import slugify
 
 from parole2.settings import PAROLES_PUB_HOUR
 
@@ -27,6 +28,7 @@ class ParoleManager(models.Manager):
 
     def last_published(self):
         return super(ParoleManager, self).get_query_set() \
+                .filter(date__lte=get_pub_date()) \
                 .order_by('date').reverse()[0:1].get()
 
 class Parole(models.Model):
@@ -36,6 +38,7 @@ class Parole(models.Model):
     author = models.CharField(max_length=255)
     source = models.CharField(max_length=255)
     date = models.DateField(unique=True)
+    slug = models.SlugField()
 
     objects = ParoleManager()
 
@@ -45,9 +48,14 @@ class Parole(models.Model):
     def __unicode__(self):
         return self.author + ' - ' + self.title
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Parole, self).save(*args, **kwargs)
+
 class ParoleForm(ModelForm):
     class Meta:
         model = Parole
+        exclude = ('slug',)
         widgets = {
             'title': TextInput(attrs={'class': 'span4'}),
             'parole': Textarea(attrs={'class': 'span4', 'rows': 5}),
