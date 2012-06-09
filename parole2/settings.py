@@ -105,6 +105,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'admin.context_processors.openid_username',
     'admin.context_processors.pub_hour',
+    'paroles.context_processors.paroles_context',
 )
 
 # List of callables that know how to import templates from various sources.
@@ -149,6 +150,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'paroles',
     'admin',
+    'lettuce.django',
 )
 
 # A sample logging configuration. The only tangible logging

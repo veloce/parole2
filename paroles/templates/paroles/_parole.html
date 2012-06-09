@@ -1,0 +1,7 @@
+Title: {{ parole.title }}<br/>
+Citation: {{ parole.parole }}<br />
+Author: {{ parole.author }} <br />
+Date: {{ parole.date }}
+
+Comments:
+{% include 'paroles/disqus.html' with parole=parole %}
