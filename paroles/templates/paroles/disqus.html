@@ -1,3 +1,4 @@
+{% load paroles_extra %}
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 {% if disqus_developer %}
@@ -5,7 +6,7 @@
 {% endif %}
     var disqus_shortname = 'parole2';
     var disqus_identifier = "{{ parole_domain }}{{ parole.date|date:'c' }}";
-    var disqus_url = "{% url paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.author_slug parole.title_slug %}";
+    var disqus_url = "{% absurl paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.author_slug parole.title_slug %}";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
