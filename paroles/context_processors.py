@@ -10,6 +10,8 @@ RequestContext.
 """
 
 def paroles_context(request):
-    dic = {'parole_domain': 'test' }
+    dict = {'parole_domain': 'test' }
     if DEBUG:
-        dic['disqus_developer'] = True
+        dict['disqus_developer'] = True
+
+    return dict
