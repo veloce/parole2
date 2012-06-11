@@ -1,7 +1,7 @@
 {% extends 'admin/layout.html' %}
 
 {% block content %}
-<div class="hero-unit">
+<header class="paroles">
     <h1>Paroles... Paroles</h1>
     <blockquote>
         <p>
@@ -18,7 +18,8 @@
     </blockquote>
     <p><a class="btn btn-primary btn-large" data-toggle="modal" href="{% url admin.views.add %}">Ajouter une nouvelle parole »</a></p>
     <p><a class="btn btn-large" href="http://parole2.disqus.com/admin/moderate/" target="_blank">Modérer les commentaires »</a></p>
-</div>
+</header>
+<hr/>
 {% if messages %}
 <div class="row">
     <div class="span12">

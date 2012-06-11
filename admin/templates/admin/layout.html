@@ -6,9 +6,19 @@
         <meta name="author" content="parole2">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Parole2 - admin</title>
+        <style>
+          body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+          }
+        </style>
         <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
         <link href="{{ STATIC_URL }}css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css" />
         <link href="{{ STATIC_URL }}css/admin-style.css" rel="stylesheet" type="text/css" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
         <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery-ui-1.8.17.custom.min.js"></script>
         <script src="{{ STATIC_URL }}js/jquery.ui.datepicker-fr.js"></script>
