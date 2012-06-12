@@ -1,1 +1,32 @@
 .modal { display: none; }
+@media (max-width: 480px) {
+    .hero-unit h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-right: 0;
+    }
+    .hero-unit p {
+        text-align: center;
+        margin-right: 0;
+        margin-left: 0;
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .hero-unit .btn {
+        display: block;
+        font-size: 18px;
+        padding: 10px 14px;
+        margin: 0 auto 10px;
+    }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+
+  .hero-unit h1 {
+    font-size: 54px;
+  }
+  .hero-unit p {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+}

@@ -1,8 +1,8 @@
 {% extends 'admin/layout.html' %}
 
 {% block content %}
-<header class="paroles">
-    <h1>Paroles... Paroles</h1>
+<div class="hero-unit">
+    <h1>Paroles</h1>
     <blockquote>
         <p>
             Paroles et paroles et paroles /
@@ -16,10 +16,9 @@
         </p>
         <small>Dalida et Alain Delon, 1972</small>
     </blockquote>
-    <p><a class="btn btn-primary btn-large" data-toggle="modal" href="{% url admin.views.add %}">Ajouter une nouvelle parole »</a></p>
+    <p><a class="btn btn-primary btn-large" href="{% url admin.views.add %}">Ajouter une nouvelle parole »</a></p>
     <p><a class="btn btn-large" href="http://parole2.disqus.com/admin/moderate/" target="_blank">Modérer les commentaires »</a></p>
-</header>
-<hr/>
+</div>
 {% if messages %}
 <div class="row">
     <div class="span12">
