@@ -9,6 +9,7 @@ ADMINS = (
 
 AUTHORIZED_EMAILS = set([
     'vincent.velociter@gmail.com',
+    'jerome.velociter@gmail.com',
     'modo.parole2@gmail.com',
     'maxanot@gmail.com',
 ])
