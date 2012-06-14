@@ -71,7 +71,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue, Arial, serif";
+  font-family: "Helvetica Neue",Arial,FreeSans;
 }
 
 header {
@@ -126,7 +126,7 @@ article.citation blockquote:after {
 
 article.citation blockquote:before {
   content: "\201C";
-  font-family: "Times new roman";
+  font-family: "Times New Roman",FreeSerif;
 }
 
 article.citation blockquote:after {
@@ -134,7 +134,7 @@ article.citation blockquote:after {
    * so that their is room to display the mark without overlaping with the upper line. */
   vertical-align: sub;
   content:"\201E";
-  font-family: "Times new roman";
+  font-family: "Times New Roman",FreeSerif;
 }
 
 article.citation div.bottom {
