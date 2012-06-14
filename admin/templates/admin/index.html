@@ -25,7 +25,13 @@
         {% for message in messages %}
         <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
             <a class="close" data-dismiss="alert">×</a>
-            <h4 class="alert-heading">Info</h4>
+            {% if message.tags == 'success' %}
+            <h4 class="alert-heading">Yeah !</h4>
+            {% elif message.tags == 'error' %}
+            <h4 class="alert-heading">Oops !</h4>
+            {% else %}
+            <h4 class="alert-heading">Info !</h4>
+            {% endif %}
             {{ message }}
         </div>
         {% endfor %}

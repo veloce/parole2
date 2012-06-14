@@ -31,6 +31,7 @@ def edit(request, id_parole):
         form = ParoleForm(request.POST, instance=parole)
         if form.is_valid():
             form.save()
+            messages.success(request, 'La parole a été changée.')
             return redirect('admin.views.index')
     else:
         form = ParoleForm(instance=parole)
@@ -41,7 +42,7 @@ def edit(request, id_parole):
 def delete(request, id_parole):
     parole = get_object_or_404(Parole, pk=id_parole)
     parole.delete()
-    messages.info(request, 'La parole a été supprimée.')
+    messages.success(request, 'La parole a été supprimée.')
     return redirect('admin.views.index')
 
 def logout(request):
