@@ -1,7 +1,17 @@
-Title: {{ parole.title }}<br/>
-Citation: {{ parole.parole }}<br />
-Author: {{ parole.author }} <br />
-Date: {{ parole.date }}
-
-Comments:
-{% include 'paroles/disqus.html' with parole=parole %}
+{% load paroles_extra %}
+<section>
+  <article class="citation">
+    <h2>
+        {{ parole.title }}
+    </h2>
+    <blockquote>
+    {{ parole.parole }}
+    </blockquote>
+    <div class="bottom">
+        <span class="author">{{ parole.author }}</span>
+        <cite>{{ parole.source }}</cite>
+      <span class="permalink"><a href="{% absurl paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.author_slug parole.title_slug %}">Permalien</a></span>
+    </div>
+  </article>
+  {% include 'paroles/disqus.html' with parole=parole %}
+</section>

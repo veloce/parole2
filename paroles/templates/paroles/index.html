@@ -1,4 +1,5 @@
+{% extends 'paroles/layout.html' %}
+
+{% block content %}
 {% include 'paroles/_parole.html' with parole=parole %}
-<br />
-<br />
-Permalink: <a href="{% url paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.author_slug parole.title_slug %}">here</a>
+{% endblock %}
