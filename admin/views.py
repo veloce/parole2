@@ -37,6 +37,7 @@ def edit(request, id_parole):
 
     return render(request, 'admin/edit.html', {'form': form, 'parole': parole})
 
+@require_http_methods(['POST'])
 def delete(request, id_parole):
     parole = get_object_or_404(Parole, pk=id_parole)
     parole.delete()
