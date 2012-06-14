@@ -16,7 +16,7 @@ AUTHORIZED_EMAILS = set([
 
 PAROLES_PUB_HOUR = 2 # 2h du mat
 
-PAROLE2_DOMAIN = 'localhost:8000'
+PAROLE2_DOMAIN = 'stormy-sunset-3188.herokuapp.com'
 
 MANAGERS = ADMINS
 
