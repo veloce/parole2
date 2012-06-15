@@ -48,4 +48,4 @@ def delete(request, id_parole):
 def logout(request):
     del request.session['openid_username']
     request.session.flush()
-    return redirect('/')
+    return redirect('paroles.views.index')
