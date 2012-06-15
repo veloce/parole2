@@ -31,3 +31,10 @@ Guide de démarrage
 
     $ python manage.py runserver
         
+## Deployer sur heroku
+
+### Installer la [heroku toolbelt](https://toolbelt.herokuapp.com/osx)
+
+    $ heroku login
+    $ git remote add heroku git@heroku.com:stormy-sunset-3188.git
+    $ git push heroku master
