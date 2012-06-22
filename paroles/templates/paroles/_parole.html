@@ -2,9 +2,10 @@
 <section>
   <article class="citation">
     <ul id="navigation">
-        <li><a class="first" href="{% url paroles.views.parole first.date|date:'Y' first.date|date:'m' first.date|date:'d' first.author_slug first.title_slug %}">|&lt;</a></li>
-        <li><a class="prev" href="{% if prev %}{% url paroles.views.parole prev.date|date:'Y' prev.date|date:'m' prev.date|date:'d' prev.author_slug prev.title_slug %}{% else %}#{% endif %}">&laquo;</a></li>
-        <li><a class="next" href="{% if next %}{% url paroles.views.parole next.date|date:'Y' next.date|date:'m' next.date|date:'d' next.author_slug next.title_slug %}{% else %}#{% endif %}">&raquo;</a></li>
+        <li><a class="first" href="{{ first.get_absolute_url }}">|&lt;</a></li>
+        <li><a class="prev" href="{% if prev %}{{ prev.get_absolute_url }}{% else %}#{% endif %}">&laquo;</a></li>
+        <li><a class="random" href="{% url paroles.views.random %}">Aléatoire</a></li>
+        <li><a class="next" href="{% if next %}{{ next.get_absolute_url }}{% else %}#{% endif %}">&raquo;</a></li>
         <li><a class="last" href="{% url paroles.views.index %}">&gt;|</a></li>
     </ul>
     <div class="parole"{% if parole.comment %} title="{{ parole.comment }}"{% endif %}>

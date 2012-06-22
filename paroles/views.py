@@ -1,8 +1,8 @@
 # Create your views here.
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone as tz
 from django.core.exceptions import ObjectDoesNotExist
-
+from random import choice
 from paroles.models import Parole
 
 def index(request):
@@ -30,3 +30,7 @@ def parole(request, year, month, day, author_slug, title_slug):
     first = Parole.objects.first_published()
     return render(request, 'paroles/parole.html',
             {'parole': parole, 'prev': prev, 'next': next, 'first': first})
+
+def random(request):
+    parole = choice(list(Parole.objects.published()))
+    return redirect(parole)

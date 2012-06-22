@@ -67,6 +67,15 @@ class Parole(models.Model):
     def __unicode__(self):
         return self.author + ' - ' + self.title
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('paroles.views.parole', (), {
+            'year': self.date.strftime('%Y'),
+            'month': self.date.strftime('%m'),
+            'day': self.date.strftime('%d'),
+            'author_slug': self.author_slug,
+            'title_slug': self.title_slug})
+
     def save(self, *args, **kwargs):
         self.author_slug = slugify(self.author)
         self.title_slug = slugify(self.title)
