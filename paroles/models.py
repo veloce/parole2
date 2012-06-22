@@ -48,7 +48,8 @@ class Parole(models.Model):
     parole = models.TextField()
     comment = models.TextField(blank=True)
     author = models.CharField(max_length=255)
-    source = models.CharField(max_length=255)
+    source_text = models.CharField(max_length=255)
+    source_url = models.URLField(blank=True)
     date = models.DateField(unique=True)
     author_slug = models.SlugField()
     title_slug = models.SlugField()
@@ -75,6 +76,7 @@ class ParoleForm(ModelForm):
             'parole': Textarea(attrs={'class': 'span4', 'rows': 5}),
             'comment': Textarea(attrs={'class': 'span4', 'rows': 5}),
             'author': TextInput(attrs={'class': 'span4'}),
-            'source': TextInput(attrs={'class': 'span4'}),
+            'source_text': TextInput(attrs={'class': 'span2', 'placeholder': 'Titre'}),
+            'source_url': TextInput(attrs={'class': 'span2', 'placeholder': 'Url'}),
             'date': DateInput(attrs={'class': 'span4'}),
         }

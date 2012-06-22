@@ -14,7 +14,13 @@
       </blockquote>
       <div class="bottom">
           <span class="author">{{ parole.author }}</span>
-          <cite>{{ parole.source }}</cite>
+          <cite>
+          {% if parole.source_url %}
+              <a href="{{ parole.source_url }}" target="_blank">{{ parole.source_text }}</a>
+          {% else %}
+              {{ parole.source_text }}
+          {% endif %}
+          </cite>
         <span class="permalink"><a href="{% absurl paroles.views.parole parole.date|date:'Y' parole.date|date:'m' parole.date|date:'d' parole.author_slug parole.title_slug %}">Permalien</a></span>
       </div>
     </div>

@@ -61,7 +61,13 @@
                     <td class="parole-parole">{{ parole.parole }}</td>
                     <td class="parole-comment">{{ parole.comment }}</td>
                     <td class="parole-author">{{ parole.author }}</td>
-                    <td class="parole-source">{{ parole.source }}</td>
+                    <td class="parole-source">
+                    {% if parole.source_url %}
+                        <a href="{{ parole.source_url }}" target="_blank">{{ parole.source_text }}</a>
+                    {% else %}
+                        {{ parole.source_text }}
+                    {% endif %}
+                    </td>
                     <td class="parole-date">{{ parole.date }}</td>
                     <td>
                         <a class="btn btn-small edit-parole" href="{% url admin.views.edit parole.id %}">Editer</a> &dash;

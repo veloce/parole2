@@ -1,14 +1,50 @@
 {% csrf_token %}
 <fieldset>
-    {% for field in form %}
-    <div class="control-group{% if field.errors %} error{% endif %}">
-        {{ field.label_tag }}
+    <div class="control-group{% if form.title.errors %} error{% endif %}">
+        <label for="id_title">Titre</label>
         <div class="controls">
-            {{ field }}
-            {{ field.errors }}
+            {{ form.title }}
+            {{ form.title.errors }}
         </div>
     </div>
-    {% endfor %}
+    <div class="control-group{% if form.parole.errors %} error{% endif %}">
+        {{ form.parole.label_tag }}
+        <div class="controls">
+            {{ form.parole }}
+            {{ form.parole.errors }}
+        </div>
+    </div>
+    <div class="control-group{% if form.comment.errors %} error{% endif %}">
+        <label for="id_comment">Commentaire décalé</label>
+        <div class="controls">
+            {{ form.comment }}
+            {{ form.comment.errors }}
+        </div>
+    </div>
+    <div class="control-group{% if form.author.errors %} error{% endif %}">
+        <label for="id_author">Auteur</label>
+        <div class="controls">
+            {{ form.author }}
+            {{ form.author.errors }}
+        </div>
+    </div>
+    <div class="control-group{% if form.source_text.errors or form.source_url.errors %} error{% endif %}">
+        <label>Source</label>
+        <div class="controls">
+            {{ form.source_text }}
+            {{ form.source_text.errors }}
+            {{ form.source_url }}
+            {{ form.source_url.errors }}
+            <p class="help-block">Entrer l'URL pour créer un lien avec la source.</p>
+        </div>
+    </div>
+    <div class="control-group{% if form.date.errors %} error{% endif %}">
+        {{ form.date.label_tag }}
+        <div class="controls">
+            {{ form.date }}
+            {{ form.date.errors }}
+        </div>
+    </div>
     <button type="submit" class="btn btn-primary">Sauver</button>
     <a href="{% url admin.views.index %}" class="btn">Annuler</a>
 </fieldset>
