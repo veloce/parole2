@@ -26,6 +26,11 @@ class ParoleManager(models.Manager):
         return super(ParoleManager, self).get_query_set() \
                 .filter(date__gt=get_pub_date())
 
+    def first_published(self):
+        return super(ParoleManager, self).get_query_set() \
+                .filter(date__lte=get_pub_date()) \
+                .order_by('date')[0:1].get()
+
     def last_published(self):
         return super(ParoleManager, self).get_query_set() \
                 .filter(date__lte=get_pub_date()) \

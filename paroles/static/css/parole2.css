@@ -90,6 +90,20 @@ section {
   padding: 0;
 }
 
+#navigation {
+  text-align:center;
+  margin:0 0 10px;
+}
+
+#navigation li {
+  display:inline;
+}
+
+#navigation a {
+  text-decoration:none;
+  margin: 0 5px;
+}
+
 article.citation {
   /* Vertical centering, c.f. http://blog.themeforest.net/tutorials/vertical-centering-with-css/ method 2. */
   position:absolute;

@@ -11,8 +11,9 @@ def index(request):
         prev = Parole.objects.previous_published(parole.date)
     except ObjectDoesNotExist:
         prev = None
+    first = Parole.objects.first_published()
     return render(request, 'paroles/index.html',
-            {'parole': parole, 'prev': prev})
+            {'parole': parole, 'prev': prev, 'first': first})
 
 def parole(request, year, month, day, author_slug, title_slug):
     date = tz.datetime(int(year), int(month), int(day)).date()
@@ -26,5 +27,6 @@ def parole(request, year, month, day, author_slug, title_slug):
         next = Parole.objects.next_published(parole.date)
     except ObjectDoesNotExist:
         next = None
+    first = Parole.objects.first_published()
     return render(request, 'paroles/parole.html',
-            {'parole': parole, 'prev': prev, 'next': next})
+            {'parole': parole, 'prev': prev, 'next': next, 'first': first})
