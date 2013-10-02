@@ -7,16 +7,14 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+# only those email are authorized to connect to the admin
 AUTHORIZED_EMAILS = set([
-    'vincent.velociter@gmail.com',
-    'jerome.velociter@gmail.com',
-    'modo.parole2@gmail.com',
-    'maxanot@gmail.com',
+    'user@example.com',
 ])
 
 PAROLES_PUB_HOUR = 2 # 2h du mat
 
-PAROLE2_DOMAIN = 'stormy-sunset-3188.herokuapp.com'
+PAROLE2_DOMAIN = 'example.com' # 'stormy-sunset-3188.herokuapp.com'
 
 MANAGERS = ADMINS
 
