@@ -1,40 +1,40 @@
-Guide de démarrage
+Starting guide
 =================
 
-## Prérequis
+## Prerequisites
 
 * Python 2.7
-* Virtualenv (voir ce [guide](http://docs.python-guide.org/en/latest/starting/install/linux/) pour l'installation)
+* Virtualenv (see [this guide](http://docs.python-guide.org/en/latest/starting/install/linux/))
 
-## Étapes
+## Steps
 
-### Cloner le repository git
+### Clone repo
 
     $ git clone git@bitbucket.org:veloce/parole2-django.git parole2
     $ cd parole2
 
-### Créer et activer le virtualenv
+### Create and activate virtualenv
 
     $ virtualenv venv --distribute
     $ . venv/bin/activate
 
-### Installer les dépendances
+### Install dependencies
 
     $ pip install -r requirements.txt
 
-### Configurer la base de donnée
+### Configure database
 
-    $ cp local_settings.py.txt local_settings.py # pour utiliser sqlite
+    $ cp local_settings.py.txt local_settings.py # will use sqlite
     $ python manage.py syncdb
 
-### Lancer le serveur web
+### Run web server
 
     $ python manage.py runserver
-        
-## Deployer sur heroku
 
-### Installer la [heroku toolbelt](https://toolbelt.herokuapp.com/osx)
+## Deploy on heroku
+
+### Install the [heroku toolbelt](https://toolbelt.herokuapp.com/osx)
 
     $ heroku login
-    $ git remote add heroku git@heroku.com:stormy-sunset-3188.git
+    $ git remote add heroku git@heroku.com:your-domain-name.git
     $ git push heroku master
